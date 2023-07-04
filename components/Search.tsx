@@ -1,6 +1,7 @@
 //@ts-nocheck
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image'
+import { request } from 'http';
 
 export default function SearchFn ({data}) {
   const [searchQuery, setSearchQuery] = useState('');
@@ -21,10 +22,20 @@ export default function SearchFn ({data}) {
   useEffect(() => {
     const fetchAutocompleteResults = async () => {
       try {
+
+        var myHeaders = new Headers();
+
+        var requestOptions = {
+          method: 'GET',
+          mode: 'cors',
+          headers: myHeaders,
+          redirect: 'follow'
+        }
+
         const response = await fetch(
           `https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(
             searchQuery
-          )}&key=b71bc74a04ea4621a789730a47d99d68&limit=5&no_annotations=1&countrycode=br`
+          )}&key=b71bc74a04ea4621a789730a47d99d68&limit=5&no_annotations=1&countrycode=br`,requestOptions
         );
         const data = await response.json();
         const results = data.results.map((result) => ({
@@ -48,7 +59,6 @@ export default function SearchFn ({data}) {
   const handleLocationSelect = (location) => {
     setSelectedLocation(location);
     data(location);
-    console.log(location);
     setAutocompleteResults([]);
   };
 
@@ -82,12 +92,6 @@ export default function SearchFn ({data}) {
             onChange={handleSearchChange}
             placeholder="Buscar cidade"
           />
-          {/* {selectedLocation && (
-            <div>
-              <p>Latitude: {selectedLocation.latitude}</p>
-              <p>Longitude: {selectedLocation.longitude}</p>
-            </div>
-          )} */}
           {autocompleteResults.length > 0 && (
             <ul className="result-search">
               {autocompleteResults.map((result) => (
