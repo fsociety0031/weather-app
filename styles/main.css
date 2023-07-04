@@ -1,3 +1,26 @@
+
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color:#7EADCE #d9d9d940;
+  }
+
+  /* Chrome, Edge, and Safari */
+  *::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: #d9d9d940;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background-color:#7EADCE;
+    border-radius: 8px;
+    border: 0px solid #ffffff;
+  }
+
 .logo {
   border-radius: 50%;
 }
@@ -6,9 +29,31 @@
   background: #7EADCE!important;
 }
 
-.wrapper {
-  width: 100vw;
+.container {
   height: 100vh;
+}
+
+.hourly-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  padding-left: 0;
+}
+
+.hourly-entry {
+  display: flex;
+  flex-direction: column;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+  height: 19vh;
+  justify-content: space-around;
+}
+
+.weather-info-hourly {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }
 
 input {
@@ -24,9 +69,23 @@ input {
   background-color: rgba(126, 173, 206, 0.5);
   border-color: transparent;
   background-repeat: no-repeat;
-  padding-left: 40px;
-  box-shadow: 0px 10px 20px 0px rgba(0,0,0,0.2);
+  padding-left: 50px;
+  box-shadow: 0px 3px 3px 0px rgba(0,0,0,0.4);
   outline: none;
+}
+
+label {
+  position: relative;
+}
+
+label:before {
+  content: "";
+  position: absolute;
+  left: 15px;
+  top: 0;
+  bottom: 0;
+  width: 20px;
+  background: url('data:image/svg+xml,<svg width="19" height="19" viewBox="0 0 19 19" fill="none" xmlns="http://www.w3.org/2000/svg"><path opacity="0.5" d="M0.133789 7.55762C0.133789 11.6396 3.45508 14.9609 7.53711 14.9609C9.15137 14.9609 10.6265 14.4414 11.8418 13.5693L16.4062 18.1431C16.6196 18.3564 16.8979 18.4585 17.1948 18.4585C17.8257 18.4585 18.2617 17.9854 18.2617 17.3638C18.2617 17.0669 18.1504 16.7979 17.9556 16.603L13.4189 12.0386C14.3745 10.7954 14.9404 9.24609 14.9404 7.55762C14.9404 3.47559 11.6191 0.154297 7.53711 0.154297C3.45508 0.154297 0.133789 3.47559 0.133789 7.55762ZM1.72021 7.55762C1.72021 4.34766 4.32715 1.74072 7.53711 1.74072C10.7471 1.74072 13.354 4.34766 13.354 7.55762C13.354 10.7676 10.7471 13.3745 7.53711 13.3745C4.32715 13.3745 1.72021 10.7676 1.72021 7.55762Z" fill="white"/></svg>') center / contain no-repeat;
 }
 
 input::placeholder {
@@ -43,9 +102,16 @@ input:focus {
 }
 
 .card {
-  width: 994px;
+  width: 90vw;
   border-radius: 34px;
   background: rgba(217, 217, 217, 0.25);
+  border: 1px solid transparent;
+}
+
+@media (min-width: 1400px) {
+  .card {
+    width: 994px;
+  } 
 }
 
 .container {
@@ -59,7 +125,6 @@ input:focus {
 }
 
 .box-condicoes {
-  width: 467px;
   height: 241px;
   border-radius: 34px;
   background: rgba(217, 217, 217, 0.25);
@@ -109,14 +174,97 @@ input:focus {
   margin-left: 10px;
 } 
 
+.climate-chart {
+  list-style-type: none;
+  padding: 0;
+}
+
+.chart-entry {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.weather-info {
+  display: flex;
+  align-items: center;
+}
+
+.weather-description {
+  margin-right: 10px;
+}
+
+.temperature-bar {
+  width: 200px;
+  height: 6px;
+  background-color: #eee;
+  border-radius: 10px;
+}
+
+.bar {
+  height: 100%;
+  border-radius: 10px;
+  background: rgb(62,196,186);
+  background: linear-gradient(90deg, rgba(62,196,186,1) 0%, rgba(226,220,38,1) 50%, rgba(191,10,10,1) 100%, rgba(0,212,255,1) 100%);
+}
+
+.min-temp,
+.max-temp {
+  margin-left: 10px;
+  position: relative;
+}
+
+
 .box-previsao {
   border-radius: 34px;
-  border: 0.5px solid rgba(255, 255, 255, 0.25);
   background: #A6C0D2;
   backdrop-filter: blur(2px);
   width: 100%;
   height: 100%;
   flex-shrink: 0;
+}
+
+li {
+  list-style: none;
+}
+
+.next-days {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  max-height: 360px;
+  overflow: overlay;
+}
+
+.next-days span {
+  font-size: 22px;
+  font-weight: 400;
+  font-family: Yantramanav;
+  color: #FFF;
+}
+
+@media (max-width: 1200px) {
+  .collapse {
+    display: flex;
+    flex-direction: row;
+    align-content: flex-start;
+    justify-content: space-around!important;
+  }
+}
+
+@media (max-width: 768px) {
+  .col-md-6 + .col-md-6 {
+    margin-top: 20px;
+  }
+  .d-flex.flex-column.justify-content-center.align-items-center {
+    width: 100%;
+  }
+  .previsao {
+    margin: 0;
+  }
 }
 
 ul.result-search {
