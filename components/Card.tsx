@@ -34,7 +34,6 @@ export default function Card(data) {
     var requestOptions = {
       method: 'GET',
       headers: myHeaders,
-      mode: 'cors',
       redirect: 'follow'
     };
 
@@ -81,7 +80,6 @@ export default function Card(data) {
         var requestOptions = {
           method: 'GET',
           headers: myHeaders,
-          mode: 'no-cors',
           redirect: 'follow'
         };
 
@@ -103,7 +101,6 @@ export default function Card(data) {
 
         const requestOptions = {
           method: 'GET',
-          mode: 'cors',
           redirect: 'follow'
         };
 
@@ -115,6 +112,8 @@ export default function Card(data) {
     }
       fetchData();
   }, [dataByLocation]);
+
+  console.log(temp);
 
   return (
     <div className="container">

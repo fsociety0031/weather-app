@@ -1,7 +1,6 @@
 //@ts-nocheck
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image'
-import { request } from 'http';
 
 export default function SearchFn ({data}) {
   const [searchQuery, setSearchQuery] = useState('');
@@ -22,20 +21,10 @@ export default function SearchFn ({data}) {
   useEffect(() => {
     const fetchAutocompleteResults = async () => {
       try {
-
-        var myHeaders = new Headers();
-
-        var requestOptions = {
-          method: 'GET',
-          mode: 'cors',
-          headers: myHeaders,
-          redirect: 'follow'
-        }
-
         const response = await fetch(
           `https://api.opencagedata.com/geocode/v1/json?q=${encodeURIComponent(
             searchQuery
-          )}&key=b71bc74a04ea4621a789730a47d99d68&limit=5&no_annotations=1&countrycode=br`,requestOptions
+          )}&key=b71bc74a04ea4621a789730a47d99d68&limit=5&no_annotations=1&countrycode=br`
         );
         const data = await response.json();
         const results = data.results.map((result) => ({
