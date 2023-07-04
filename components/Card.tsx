@@ -52,7 +52,7 @@ export default function Card(data) {
       SetDataBySearch(data.data)
       SetDataByLocation(data.data)
     }
-  });
+  }, [data.data]);
   
   useEffect(() => {
     if (navigator.geolocation) {
@@ -112,8 +112,6 @@ export default function Card(data) {
     }
       fetchData();
   }, [dataByLocation]);
-
-  console.log(temp);
 
   return (
     <div className="container">

@@ -63,7 +63,7 @@ export default function SearchFn ({data}) {
       <div className="container-fluid">
         <div className="col-md-3mb-md-0 d-sm-none d-md-block d-lg-none">
           <a href="#!" className="d-inline-flex link-body-emphasis text-decoration-none logo">
-            <Image src="/logo.webp" width={101} height={101} className="logo" />
+            <Image src="/logo.webp" width={101} height={101} className="logo" alt="logo" />
           </a>
         </div>
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -72,7 +72,7 @@ export default function SearchFn ({data}) {
         <div id="navbar" className="collapse navbar-collapse flex flex-wrap align-items-center justify-content-center py-4 mb-4">    
           <div className="col-md-1 mb-2 mb-md-0 d-none d-sm-none d-md-none d-lg-block">
             <a href="#!" className="d-inline-flex link-body-emphasis text-decoration-none logo">
-              <Image src="/logo.webp" width={101} height={101} className="logo" />
+              <Image src="/logo.webp" width={101} height={101} className="logo" alt="logo" />
             </a>
           </div>
           <ul className="nav col-12 col-md-auto mb-2">
