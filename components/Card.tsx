@@ -81,7 +81,7 @@ export default function Card(data) {
         var requestOptions = {
           method: 'GET',
           headers: myHeaders,
-          mode: 'cors',
+          mode: 'no-cors',
           redirect: 'follow'
         };
 
